@@ -1,0 +1,89 @@
+// Hyperlinks
+//
+// markup:
+// <div class="region-content">
+// <p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipiscing elit</a>.
+// Vestibulum lacinia ante non dolor viverra iaculis. Class aptent sociosqu ad
+// litora torquent per conubia nostra, per inceptos himenaeos.</p>
+// <p><a href="#">Praesent a hendrerit urna.</a></p>
+// <p>In adipiscing pulvinar eros, vitae dictum elit cursus a.</p>
+// </div>
+//
+// Style guide: base.type.links
+
+%link {
+  color: $blue-dark;
+  transition: $transition;
+  text-decoration: none;
+
+  &:visited {
+    color: $blue-verydark;
+    text-decoration: none;
+    outline: 0;
+  }
+
+  @include is-on {
+    color: $blue-verydark;
+  }
+}
+
+%link--basic {
+  padding: 0;
+  background-color: inherit;
+  color: $blue-dark;
+  border-radius: 0;
+  border-bottom: 1px $blue dotted;
+
+  &:visited {
+    color: $blue-dark;
+  }
+
+  @include is-on {
+    color: $blue-verydark;
+    border-bottom: none;
+  }
+}
+
+%link--highlight {
+  padding: 0.1rem 0.35rem;
+  box-decoration-break: clone;
+  border-radius: 5px;
+  background-color: lighten($red, 25%);
+  color: $blue;
+
+  &:visited {
+    color: $black;
+  }
+
+  @include is-on {
+    background-color: $red;
+  }
+}
+
+a {
+  @extend %link;
+}
+
+a[href^='mailto'] {
+}
+
+a[href^='tel'] {
+  color: inherit;
+  border-bottom: 1px $blue dotted;
+
+  &::before {
+    content: '\260e';
+    margin: 0 ($padding / 4);
+  }
+}
+
+.field-node--body {
+  p,
+  ul,
+  ol,
+  dl {
+    a {
+      @extend %link--highlight;
+    }
+  }
+}

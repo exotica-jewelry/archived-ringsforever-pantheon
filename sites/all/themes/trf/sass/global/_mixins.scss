@@ -1,0 +1,365 @@
+//
+// Mixins
+//
+// Documented with SassDoc.
+//
+
+/// Use calculate-rem to insert pixel and rem font-size values.
+///
+/// @link http://www.stubbornella.org/content/2013/07/01/easy-peasy-rem-conversion-with-sass/
+/// @author Fiona Chan
+///
+/// @requires calculate-rem
+///
+/// @param {font-size} $size - Font size in pixels
+///
+/// @example scss - Sass
+///   .title {
+///     @include font-size(36px);
+///   }
+///
+/// @example scss - CSS output
+///   .title {
+///     font-size: 36px;
+///     font-size: 2.25rem;
+///   }
+/// @group Utilities
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculate-rem($size);
+}
+
+/// Removes inline-block padding bug.
+///
+/// @link http://stackoverflow.com/a/5256640
+/// @author Ivan Boothe
+///
+/// @example scss - Sass
+///   ul.with-inline-blocks {
+///     @include no-block-padding;
+///   }
+///
+/// @example scss - CSS output
+///   ul.with-inline-blocks {
+///     font-size: 0;
+///   }
+/// @group Utilities
+
+@mixin no-block-padding {
+  font-size: 0;
+}
+
+/// Provides hover/active/focus styles in one definition.
+///
+/// @link https://gist.github.com/taupecat/4739443
+/// @author Tracy Rotton
+///
+/// @example scss - Sass
+///   a {
+///     text-decoration: none;
+///
+///      @include is-on {
+///        text-decoration: underline;
+///      }
+///    }
+///
+/// @example scss - CSS output
+///   a {
+///     text-decoration: none;
+///   }
+///
+///   a:hover {
+///     text-decoration: underline;
+///   }
+///
+///   a:active {
+///     text-decoration: underline;
+///   }
+///
+///   a:focus {
+///     text-decoration: underline;
+///   }
+/// @group Utilities
+
+@mixin is-on {
+  &:hover,
+  &:active,
+  &:focus {
+    @content;
+  }
+}
+
+/// Allows for setting disabled state with simpler syntax
+///
+/// @author Ivan Boothe
+///
+/// @example scss - Sass
+///   a {
+///     color: blue;
+///
+///      @include disabled {
+///        color: grey;
+///      }
+///    }
+///
+/// @example scss - CSS output
+///   a {
+///     color: blue;
+///   }
+///
+///   a[disabled="disabled"] {
+///     color: grey;
+///   }
+/// @group Utilities
+
+@mixin disabled {
+  &[disabled='disabled'] {
+    @content;
+  }
+}
+
+/// Image replacement.
+///
+/// @param {String} $image-url - location of the image to use
+///
+/// @author Scott Kellum
+///
+/// @group Utilities
+
+@mixin ir($image-url) {
+  background-image: url($image-url);
+  background-repeat: no-repeat;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/// Image replacement for embedded SVGs.
+///
+/// @param {String} $image-source - full SVG source of the image
+/// @requires svg-url
+///
+/// @author Ivan Boothe
+///
+/// @group Utilities
+
+@mixin svg-ir($image-source) {
+  background-image: svg-url($image-source);
+  background-repeat: no-repeat;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/// Gives a card depth effect.
+///
+/// @param {Number} $depth - depth level (between 1 and 5)
+///
+/// @link http://www.google.com/design/spec/layout/layout-principles.html#layout-principles-dimensionality Google Design
+/// @author Hugo Giraudel
+///
+/// @requires {function} top-shadow
+/// @requires {function} bottom-shadow
+///
+/// @group Utilities
+
+@mixin card($depth) {
+  @if $depth < 1 {
+    box-shadow: none;
+  } @else if $depth > 5 {
+    @warn 'Invalid $depth `#{$depth}` for mixin `card`.';
+  } @else {
+    box-shadow: bottom-shadow($depth), top-shadow($depth);
+  }
+}
+
+/// Creates pretty letter descenders when they intersect a border. Assumes the
+/// text sits on the solid content background.
+///
+/// @param {Number} $stroke - stroke size (in the format 1px)
+///
+/// @author Ivan Boothe
+/// @group Utilities
+
+@mixin descenders($stroke: 2px) {
+  text-shadow:
+    ($stroke * -1) ($stroke * -1) 0 color(content-bg),
+    $stroke ($stroke * -1) 0 color(content-bg),
+    ($stroke * -1) $stroke 0 color(content-bg),
+    $stroke $stroke 0 color(content-bg);
+}
+
+/// Removes flash when scaling in Webkit. Note this needs to be placed on the
+/// item in its default state — before it is hovered, scrolled, etc.
+///
+/// @link http://viget.com/inspire/webkit-transform-kill-the-flash
+/// @author Dan Tello
+///
+/// @example scss - Sass
+///   .item {
+///     height: 100px;
+///     @include no-scale-flash;
+///   }
+///
+///   .item:hover {
+///     transform: scale(0.75);
+///     transition: all 0.3s ease;
+///   }
+///
+///   .is-scrolled .item {
+///     transform: scale(0.5);
+///     animation: scaleIn 0.75s;
+///   }
+///
+/// @example scss - CSS output
+///   .item {
+///     height: 100px;
+///     -webkit-transform: translateZ(0);
+///     -webkit-backface-visibility: hidden;
+///   }
+///
+///   .item:hover {
+///     height: 75px;
+///     transition: all 0.3s ease;
+///   }
+///
+///   .is-scrolled .item {
+///     height: 50px;
+///     animation: scaleIn 0.75s;
+///   }
+/// @group Utilities
+
+@mixin no-scale-flash {
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  filter: blur(0);
+}
+
+/// Modern clearfix.
+///
+/// @link http://nicolasgallagher.com/micro-clearfix-hack/ A new micro clearfix hack
+/// @author Nicolas Gallagher
+///
+/// @group Utilities
+
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+/// Arrows.
+///
+/// @link https://gist.github.com/bpainter/1085320
+/// @author Bermon Painter
+///
+/// @param {Direction} $direction - Triangle direction: top, left, right, bottom, top-left, top-right, bottom-left, bottom-right
+/// @param {Color} $color [currentColor] - Triangle color: hex, rgb or rbga
+/// @param {Length} $size [1em] - Triangle size: px or em
+///
+/// @example scss - Sass
+/// .element {
+///   @include arrow(top, #000, 50px);
+/// }
+///
+/// @group Utilities
+
+@mixin arrow($direction, $color: currentColor, $size: 1em) {
+  display: block;
+  height: 0;
+  width: 0;
+
+  @if $direction == 'top' {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+  } @else if $direction == 'right' {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+  } @else if $direction == 'bottom' {
+    border-top: $size solid $color;
+    border-right: $size solid transparent;
+    border-left: $size solid transparent;
+  } @else if $direction == 'left' {
+    border-top: $size solid transparent;
+    border-right: $size solid $color;
+    border-bottom: $size solid transparent;
+  } @else if $direction == 'top-left' {
+    border-top: $size solid $color;
+    border-right: $size solid transparent;
+  } @else if $direction == 'top-right' {
+    border-top: $size solid $color;
+    border-left: $size solid transparent;
+  } @else if $direction == 'bottom-left' {
+    border-bottom: $size solid $color;
+    border-right: $size solid transparent;
+  } @else if $direction == 'bottom-right' {
+    border-bottom: $size solid $color;
+    border-left: $size solid transparent;
+  }
+}
+
+
+/// Visually hidden
+///
+/// Make an element visually hidden, but accessible to screen readers.
+///
+/// @link http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+///
+/// @author John Albin Wilkins
+
+@mixin visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  word-wrap: normal;
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+/// Visually hidden off
+///
+/// Turns off the visually-hidden effect.
+///
+/// @author John Albin Wilkins
+
+@mixin visually-hidden--off {
+  position: static !important;
+  clip: auto;
+  height: auto;
+  width: auto;
+  overflow: visible;
+}
+
+.visually-hidden--off {
+  @include visually-hidden--off;
+}
+
+/// Visually hidden focusable
+///
+/// Makes an element visually hidden by default, but visible when receiving focus.
+///
+/// @author John Albin Wilkins
+
+@mixin visually-hidden--focusable {
+  @include visually-hidden;
+
+  &:active,
+  &:focus {
+    @include visually-hidden--off;
+  }
+}
+
+.visually-hidden--focusable {
+  @include visually-hidden--focusable;
+}

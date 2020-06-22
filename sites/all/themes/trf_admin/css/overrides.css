@@ -1,0 +1,263 @@
+/*
+ * COMMERCE KICKSTART TOOLBAR
+ */
+
+/*
+ * Environment indicator
+ */
+
+#environment-indicator {
+  top: 59px; /* See $topbar-size in themes/trf/sass/global/variables */
+  text-shadow: none;
+}
+
+/*
+ * Accommodate escape_admin link
+ */
+
+#toolbar-home > .first {
+  padding-top: 7px;
+}
+
+.toolbar .toolbar-icon-escape-admin {
+  white-space: nowrap;
+  /* overrides escape_admin specificity which uses !important (sigh) */
+  padding-left: 2.25em !important;
+  padding-right: 0.75em !important;
+}
+
+body.toolbar #toolbar-home .toolbar-icon-escape-admin:hover,
+body.toolbar #toolbar-home .toolbar-icon-escape-admin:active,
+body.toolbar #toolbar-home .toolbar-icon-escape-admin:focus {
+  /* overrides escape_admin specificity which uses !important (sigh) */
+  background-color: #2f88cd !important;
+  box-shadow: 0 0 5px #1a6bdf inset !important;
+}
+
+.toolbar .toolbar-icon-escape-admin::before {
+  width: 16px;
+  background-position: 0 47%;
+}
+
+/*
+ * Fix overlapping fieldset legends
+ */
+
+legend {
+  min-height: 2em;
+}
+
+/*
+ * CKEditor toolbar fixes
+ */
+
+.cke_panel_frame,
+.cke_format,
+.cke_styles {
+  background-color: #fff !important;
+}
+
+/*
+ * Tweaks for the CKEditor editing area.
+ */
+
+.cke_editable {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+
+.cke_contents,
+.cke_contents.cke_reset {
+  padding: 1rem;
+}
+
+/*
+ * IMAGE ENTITIES
+ */
+
+/*
+ * Hide width field in image entities
+ */
+
+.image-widget .field-name-field-file-image-ring-width {
+  display: none;
+}
+
+/*
+ * RING NODE EDITING FORM
+ */
+
+/*
+ * Hide alt text on images since it will always be the same for rings.
+ */
+
+.node-rings-form .field-name-field-file-image-alt-text,
+/* Stupidly, there's no common type class to the following fields */
+.node-rings-form .form-item-field-images-und-0-alt,
+.node-rings-form .form-item-field-images-und-1-alt,
+.node-rings-form .form-item-field-images-und-2-alt,
+.node-rings-form .form-item-field-images-und-3-alt,
+.node-rings-form .form-item-field-images-und-4-alt,
+.node-rings-form .form-item-field-images-und-5-alt,
+.node-rings-form .form-item-field-images-und-6-alt,
+.node-rings-form .form-item-field-images-und-7-alt,
+.node-rings-form .form-item-field-images-und-8-alt,
+.node-rings-form .form-item-field-images-und-9-alt {
+  display: none;
+}
+
+/*
+ * Hide duplicate title text on images if image module inserts it.
+ */
+
+.node-rings-form .field-name-field-file-image-title-text {
+  display: none;
+}
+
+/*
+ * Hide redirects on images.
+ */
+
+.node-rings-form .redirect-list {
+  display: none;
+}
+
+/*
+ * Hide format tips for description.
+ */
+
+.node-rings-form .field-name-field-description .filter-wrapper {
+  display: none;
+}
+
+/*
+ * Make bolding in help text more visibly bold.
+ */
+
+.form-item .description strong {
+  font-weight: 600;
+}
+
+
+/*
+ * INLINE ENTITY FORM
+ */
+
+/*
+ * Setup and clearfix for wrapper
+ */
+
+.node-rings-form .ief-form > .fieldset-wrapper {
+  padding: 1em 1em 0 !important;
+}
+
+.node-rings-form .ief-form > .fieldset-wrapper::before,
+.node-rings-form .ief-form > .fieldset-wrapper::after {
+  content: ' ';
+  display: table;
+}
+
+.node-rings-form .ief-form > .fieldset-wrapper::after {
+  clear: both;
+}
+
+/*
+ * Highlight width value.
+ */
+
+.node-rings-form .field-widget-inline-entity-form .field-name-field-ring-width {
+  font-weight: bold;
+}
+
+/*
+ * Hide fields that are copied or set based on the parent product.
+ */
+
+.node-rings-form .ief-form .field-type-commerce-price,
+.node-rings-form .ief-form .field-name-field-title-parent,
+.node-rings-form .ief-form .field-name-field-images,
+.node-rings-form .ief-form .field-name-field-color {
+  display: none;
+}
+
+/*
+ * Hide status field since this can be accomplished in quick edit.
+ */
+
+.node-rings-form .ief-form .ief-product-details {
+  display: none;
+}
+
+/*
+ * Throw action button to the right by floating width settings left.
+ */
+
+.node-rings-form .ief-form .ief-product-attributes legend {
+  display: none;
+}
+
+.node-rings-form #edit-field-product-und-form-product-attributes {
+  width: 80%;
+  float: right;
+  padding-top: 0;
+}
+
+.node-rings-form #edit-field-product-und-form-product-attributes .fieldset-wrapper {
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/*
+ * Remove "Edit" option on (width) attributes since you'd only ever remove it.
+ */
+
+.node-rings-form .ief-entity-operations input:first-of-type {
+  display: none;
+}
+
+/*
+ * Improvements to operations field.
+ */
+
+.node-rings-form .ief-entity-operations {
+  margin: 1em 0;
+}
+
+.node-rings-form .ief-entity-operations .form-submit {
+  margin: 0 1em 0 0;
+}
+
+/*
+ * Add padding to related rings fieldset.
+ */
+
+.node-rings-form .field-name-field-related-rings fieldset {
+  padding: 1em;
+}
+
+.node-rings-form .field-name-field-related-rings .fieldset-legend {
+  padding: 0 0.75em;
+}
+
+/*
+ * Hide "edit" operation next to existing related rings to prevent
+ * going down the rabbit hole.
+ */
+
+.node-rings-form .field-name-field-related-rings .ief-entity-operations input[value='Edit'] {
+  display: none;
+}
+
+/*
+ * COMMERCE KICKSTART UPSELLING
+ */
+
+/*
+ * Shamelessly remove Commerce Kickstart's upselling attempts
+ */
+
+.toolbar-menu-marketplace {
+  display: none !important;
+}

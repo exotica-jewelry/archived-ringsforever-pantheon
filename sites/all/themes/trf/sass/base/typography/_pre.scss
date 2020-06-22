@@ -1,0 +1,15 @@
+// Preformatted text
+//
+// markup:
+// <pre>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+// lacinia ante non dolor viverra iaculis. Class aptent taciti sociosqu ad
+// litora torquent per conubia nostra, per inceptos himenaeos. In adipiscing
+// pulvinar eros, vitae dictum elit cursus a. Praesent a hendrerit urna.</pre>
+//
+// Style guide: base.type.preformatted
+
+pre {
+  font-family: $font-monospace;
+  @include font-size(16px);
+  white-space: pre-wrap;
+}

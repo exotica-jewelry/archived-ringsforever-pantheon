@@ -1,0 +1,31 @@
+//
+// Inline styles
+//
+
+// Strong
+//
+// markup:
+// <p>Lorem ipsum <strong>dolor sit amet</strong>, consectetur adipiscing.</p>
+//
+// Style guide: base.type.strong
+
+strong {
+  font-weight: $bold;
+}
+
+// Emphasis
+//
+// markup:
+// <p>Lorem ipsum <em>dolor sit amet</em>, consectetur adipiscing.</p>
+//
+// Style guide: base.type.em
+
+em {
+  font-family: $font-highlight;
+  font-style: italic;
+  color: lighten($black, 15%);
+
+  a & {
+    color: inherit;
+  }
+}

@@ -1,0 +1,79 @@
+//
+// All taxonomy terms
+//
+
+.page-node.node-type-rings {
+
+  // All tags
+  .field-name-field-collection,
+  .field-name-field-color,
+  .field-name-field-ring-elements-primary,
+  .field-name-field-ring-elements {
+    margin-top: $padding;
+    @include font-size(16px);
+
+    .field-items {
+      display: inline;
+      word-wrap: break-word;
+    }
+
+    .field-item {
+      display: inline-block;
+    }
+
+    a {
+      @extend %link--basic;
+      font-weight: $bold;
+      margin-right: ($padding / 2);
+    }
+  }
+
+  // Elements (keywords)
+  .field-name-field-ring-elements-primary {
+    display: inline-block;
+
+    .field-items::before {
+      content: 'Keywords: ';
+      font-weight: bold;
+      padding-right: ($padding / 4);
+
+      @include mq(smallish) {
+        padding-right: ($padding / 2);
+      }
+    }
+
+    .field-item::after {
+      padding-right: ($padding / 2);
+    }
+  }
+
+  .field-name-field-ring-elements {
+    display: inline-block;
+    margin-top: 0;
+    padding-left: 0;
+  }
+
+  // Collections
+  .field-name-field-collection {
+
+    .field-label {
+      padding-right: ($padding / 4);
+
+      @include mq(smallish) {
+        padding-right: ($padding / 2);
+      }
+    }
+  }
+
+  // Color tags
+  .field-name-field-color {
+
+    .field-label {
+      padding-right: ($padding / 4);
+
+      @include mq(smallish) {
+        padding-right: ($padding / 2);
+      }
+    }
+  }
+}

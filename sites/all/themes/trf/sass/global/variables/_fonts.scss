@@ -1,0 +1,37 @@
+// Fonts
+//
+// Style guide: variables.fonts
+
+// Font families
+//
+// $font-default - Default (body) font
+// $font-highlight - Highlight (emphasis) font
+//
+// markup:
+// <div style="font-family: {$modifiers};">{$modifiers}</div>
+//
+// Style guide: variables.fonts.families
+
+$font-default: 'Roboto', Helvetica, Arial, sans-serif;
+$font-highlight: 'Lora', Georgia, Times, 'Times New Roman', serif;
+$font-monospace: Monaco, monospace, monospace;
+
+// Font weights
+//
+// These variables only apply to the default font.
+//
+// $thin - Thin
+// $normal - Normal
+// $bold - Bold
+// $ultra-bold - Ultra bold
+//
+// markup:
+// <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Lora:400i/Roboto:500,300,700,900" media="all" />
+// <div style="font-family: $font-default; font-weight: {$modifiers};">{$modifiers}</div>
+//
+// Style guide: variables.fonts.weights
+
+$thin: 300;
+$normal: 500;
+$bold: 700;
+$ultra-bold: 900;

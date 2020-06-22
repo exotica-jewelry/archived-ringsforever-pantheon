@@ -1,0 +1,17 @@
+name = TRF store taxes
+description = Sets tax rates.
+core = 7.x
+package = TRF Store
+php = 5.2.4
+version = 7.x-1.0
+project = trf_store_taxes
+dependencies[] = commerce_features
+dependencies[] = commerce_order
+dependencies[] = commerce_tax
+dependencies[] = commerce_tax_ui
+dependencies[] = features
+dependencies[] = rules
+features[commerce_tax_rate][] = tax_az_sales
+features[commerce_tax_type][] = sales_tax
+features[features_api][] = api:1
+features[rules_config][] = commerce_tax_rate_tax_az_sales

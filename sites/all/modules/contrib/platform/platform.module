@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * @file
+ * Displays informations about the Platform.sh environment you are viewing.
+ *
+ * We do this by adding a div that is fixed to the bottom of the page. We can
+ * read environment variables configured in Platform.sh to find the environment
+ * name and then add the value to Drupal's JavaScript settings array for display
+ * on the site.
+ */
+
+/**
+ * Implements hook_page_build().
+ */
+function platform_page_build(&$page) {
+  // Check that the user has permission to view the indicator bar.
+  if (user_access('platform indicator bar')) {
+    // Fetch the name of the current Platform.sh environment.
+    $platform_environment = platform_get_environment();
+
+    // Check to ensure we are on a Platform.sh branch other than 'master'.
+    if (!empty($platform_environment) && $platform_environment != 'master') {
+      // Fetch the project ID of the current Platform.sh environment.
+      $platform_project_id = platform_get_project_id();
+
+      // Construct the settings array to send to the JavaScript.
+      $settings = array(
+        'environment' => check_plain($platform_environment),
+        'project_id' => check_plain($platform_project_id),
+      );
+
+      // Send the settings array and attach the JavaScript and CSS to the page.
+      drupal_add_js($settings, 'setting');
+      drupal_add_css(drupal_get_path('module', 'platform') . '/theme/platform.css');
+      drupal_add_js(drupal_get_path('module', 'platform') . '/js/platform.js');
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function platform_preprocess_html(&$vars) {
+  // Add the platform-indicator class to the body tag.
+  $vars['classes_array'][] = 'platform-indicator';
+}
+
+/**
+ * Returns the ID (branch name) of the current Platform.sh environment.
+ */
+function platform_get_environment() {
+  return getenv('PLATFORM_BRANCH');
+}
+
+/**
+ * Returns the project ID of the current Platform.sh environment.
+ */
+function platform_get_project_id() {
+  return getenv('PLATFORM_PROJECT');
+}
+
+/**
+ * Implements hook_permission().
+ */
+function platform_permission() {
+  return array(
+    'platform indicator bar' => array(
+      'title' => t('View Platform.sh indicator bar'),
+      'description' => t('Allow people to view the Platform.sh environment informations at the bottom of the site.'),
+    ),
+  );
+}

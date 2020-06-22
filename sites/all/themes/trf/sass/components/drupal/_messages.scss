@@ -1,0 +1,112 @@
+//
+// Drupal messages
+//
+// markup:
+// <div class="messages">.messages</div>
+//
+// Style guide: components.drupal-messages
+
+.messages.messages {
+  padding: $padding $padding $padding (3 * $padding);
+  margin: $padding 0;
+  @include font-size(16px);
+  text-shadow: 1px 1px 0 $white-rgba;
+  background-image: none;
+  border: 5px solid $black;
+  border-radius: $border-radius;
+  box-shadow: none;
+  color: $black;
+
+  em {
+    color: $black;
+  }
+
+  // Code, file and line number snippets.
+  .placeholder {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+
+  a {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}
+
+%message--icon {
+  background-size: 2rem;
+  background-position: ($padding / 2) 50% !important;
+}
+
+//
+// Status (success) message
+//
+// markup:
+// <div class="messages messages--status">.messages--status</div>
+//
+// Style guide: components.drupal-messages.success
+
+.status.status.status,
+.messages--status {
+  @extend %message--icon;
+  @include i-check(2rem, ($padding / 2), 0, $color: $green);
+  padding-left: ($padding * 3);
+  background-color: $green-rgba !important;
+  border-color: $green;
+}
+
+//
+// Warning message
+//
+// markup:
+// <div class="messages messages--warning">.messages--warning</div>
+//
+// Style guide: components.drupal-messages.warning
+
+.warning.warning.warning,
+.messages--warning {
+  @extend %message--icon;
+  @include i-exclamation(2rem, ($padding / 2), 0, $color: $yellow);
+  padding-left: ($padding * 3);
+  background-color: $yellow-rgba !important;
+  border-color: $yellow;
+}
+
+//
+// Error message
+//
+// markup:
+// <div class="messages messages--error">.messages--error</div>
+//
+// Style guide: components.drupal-messages.error
+
+.error.error.error,
+.messages--error {
+  @extend %message--icon;
+  @include i-x(2rem, ($padding / 2), 0, $color: $red);
+  padding-left: ($padding * 3);
+  background-color: $red-rgba !important;
+  border-color: $red;
+}
+
+//
+// Tweak for SEO Checker results
+//
+
+.seo-check-results {
+  margin: 0 0 $padding;
+  padding: $padding $padding ($padding / 4);
+  background-color: $white-rgba;
+  border-radius: $border-radius;
+
+  th {
+    padding-left: 0;
+    @include font-size(14px);
+    text-transform: uppercase;
+  }
+
+  td {
+    padding: ($padding / 4) !important;
+  }
+}

@@ -1,0 +1,45 @@
+//
+// Page title <h1>
+//
+
+%page-title {
+  @extend %header;
+  margin-top: $padding;
+  font-weight: $normal;
+  color: $black;
+
+  // unset Omega styles
+  text-transform: none;
+
+  @include mq(smallish) {
+    margin-top: (2 * $padding);
+    @include font-size(60px);
+    letter-spacing: -0.1rem;
+    word-spacing: 0.5rem;
+    font-weight: $thin;
+  }
+}
+
+%page-title--product-list {
+  @extend %page-title;
+  @include descenders;
+  position: relative;
+  left: 2px;
+  margin-left: 0;
+  margin-bottom: ($padding * 2);
+  @include font-size(28px);
+  font-weight: $normal;
+  line-height: 1em;
+  text-shadow: none;
+  color: $black;
+  border-bottom: 1px $black solid;
+
+  @include mq(smallish) {
+    @include font-size(42px);
+  }
+}
+
+.block-blockify-page-title .page-title {
+  @extend %page-title;
+  margin-left: 0;
+}

@@ -1,0 +1,11 @@
+// Form label
+//
+// markup:
+// <div class="form-item"><label>Label</label> <input type="text"></div>
+//
+// Style guide: base.form.label
+label {
+  @include font-size(16px);
+  line-height: 2.25rem; // aligns with inputs' and selects' padding
+  font-weight: $bold;
+}

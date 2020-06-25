@@ -668,4 +668,22 @@ $conf['file_scan_ignore_directories'] = array(
   'node_modules',
   'bower_components',
 );
+# Set anonymous name
+$conf['anonymous'] = 'Visitor';
 
+# Fast404 pass-throughs for AdvAgg
+$conf['404_fast_paths_exclude'] = '/\/(?:styles|advagg_(cs|j)s)\//';
+$conf['fast_404_string_whitelisting'][] = '/advagg_';
+
+# Disabling AdvAgg expires notices
+$conf['advagg_skip_far_future_check'] = TRUE;
+
+# Set error display
+# 0 = log only; 1 = hard errors; 2 = all warnings
+ini_set('display_errors', FALSE);
+ini_set('display_startup_errors', FALSE);
+ini_set('display_errors', '0');
+$conf['error_level'] = 0;
+
+# Allow Drupal to preserve double underscores (BEM syntax)
+$conf['allow_css_double_underscores'] = TRUE;

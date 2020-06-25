@@ -687,3 +687,12 @@ $conf['error_level'] = 0;
 
 # Allow Drupal to preserve double underscores (BEM syntax)
 $conf['allow_css_double_underscores'] = TRUE;
+
+if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
+ // set schema for apachesolr OR set schema for search_api_solr (uncomment the line you need)
+ // $conf['pantheon_apachesolr_schema'] = 'sites/all/modules/apachesolr/solr-conf/solr-3.x/schema.xml';
+ // $conf['pantheon_apachesolr_schema'] = 'sites/all/modules/search_api_solr/solr-conf/solr-3.x/schema.xml';
+ // or if you have a contrib folder for modules use
+ $conf['pantheon_apachesolr_schema'] = 'sites/all/modules/contrib/apachesolr/solr-conf/solr-3.x/schema.xml';
+ // $conf['pantheon_apachesolr_schema'] = 'sites/all/modules/contrib/search_api_solr/solr-conf/solr-3.x/schema.xml';
+}

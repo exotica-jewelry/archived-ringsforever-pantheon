@@ -4,11 +4,8 @@ TRF is a custom Drupal theme.
 
 ## Basic development instructions
 
-TRF is compiled from Sass into CSS using `gulp`. We use `gulp-sass`, which uses
-`node-sass`, which runs on `libsass`.
-
-First, you will need to install Node.js and Gulp; ample documentation exists
-online to guide you.
+TRF is compiled from Sass into CSS using `gulp`. First, install Node.js, Gulp
+and Bower; ample documentation exists online to guide you.
 
 To compile the Sass into updated CSS, from the command line, `cd` into the theme
 directory and run `npm install` and `bower install` to fetch all dependencies.
@@ -18,7 +15,7 @@ auto-prefix CSS rulesets.
 
 ## Version control
 
-TRF's entire codebase is version-controlled with git, hosted in a public 
+TRF's entire codebase is version-controlled with git, hosted in a public
 [GitHub account](https://github.com/rootwork/ringsforever).
 
 Do not change anything without committing it to git; even if it's a temporary

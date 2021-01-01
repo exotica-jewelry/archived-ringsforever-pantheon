@@ -7,8 +7,11 @@ TRF is a custom Drupal theme.
 TRF is compiled from Sass into CSS using `gulp`. First, install Node.js, Gulp
 and Bower; ample documentation exists online to guide you.
 
-To compile the Sass into updated CSS, from the command line, `cd` into the theme
-directory and run `npm install` and `bower install` to fetch all dependencies.
+To compile the Sass into updated CSS, from the command line:
+
+* `cd sites/all/themes/trf`
+* `npm install && bower install`
+
 Then, run `gulp` to start watching and compiling. The default gulp task will
 update documentation as necessary, as well as minify images and scripts, and
 auto-prefix CSS rulesets.

@@ -93,17 +93,21 @@
 
 
     <section class="readme-section">
-        <article><h1>The Titanium Rings Forever theme</h1><p>TRF is a custom Drupal theme.</p>
-<h2>Basic development instructions</h2><p>TRF is compiled from Sass into CSS using <code>gulp</code>. We use <code>gulp-sass</code>, which uses
-<code>node-sass</code>, which runs on <code>libsass</code>.</p>
-<p>First, you will need to install Node.js and Gulp; ample documentation exists
-online to guide you.</p>
-<p>To compile the Sass into updated CSS, from the command line, <code>cd</code> into the theme
-directory and run <code>npm install</code> and <code>bower install</code> to fetch all dependencies.
-Then, run <code>gulp</code> to start watching and compiling. The default gulp task will
+        <article><h1>The Titanium Rings Forever theme</h1>
+<p>TRF is a custom Drupal theme.</p>
+<h2>Basic development instructions</h2>
+<p>TRF is compiled from Sass into CSS using <code>gulp</code>. First, install Node.js, Gulp
+and Bower; ample documentation exists online to guide you.</p>
+<p>To compile the Sass into updated CSS, from the command line:</p>
+<ul>
+<li><code>cd sites/all/themes/trf</code></li>
+<li><code>npm install &amp;&amp; bower install</code></li>
+</ul>
+<p>Then, run <code>gulp</code> to start watching and compiling. The default gulp task will
 update documentation as necessary, as well as minify images and scripts, and
 auto-prefix CSS rulesets.</p>
-<h2>Version control</h2><p>TRF's entire codebase is version-controlled with git, hosted in a public 
+<h2>Version control</h2>
+<p>TRF's entire codebase is version-controlled with git, hosted in a public
 <a href="https://github.com/rootwork/ringsforever">GitHub account</a>.</p>
 <p>Do not change anything without committing it to git; even if it's a temporary
 or emergency fix, making one 5-second git commit will make it easier to track,
@@ -111,19 +115,24 @@ change, or undo in the future.</p>
 <p>Because to date Exotica has had just one web developer, we go ahead and commit
 compiled CSS and minified JavaScript to the repository. Should we have multiple
 developers working together in the future, this approach could be revised.</p>
-<h2>Developer documentation</h2><p>Please review these sets of documentation before beginning development.</p>
+<h2>Developer documentation</h2>
+<p>Please review these sets of documentation before beginning development.</p>
 <p><strong>Please use comments in the Sass and JavaScript files, consistent with the
 documentation syntax, when adding new code.</strong></p>
 <p>Documentation is critical to keeping this theme maintainable. Please do not plan
 to &quot;do it later&quot;. Do it now, as you write your code.</p>
-<h3><a href="/sites/all/themes/trf/documentation/styleguide/index.html">Style Guide (KSS)</a></h3><p>Documents the assorted designs, components, styles and markup patterns defined
+<h3><a href="/sites/all/themes/trf/documentation/styleguide/index.html">Style Guide (KSS)</a></h3>
+<p>Documents the assorted designs, components, styles and markup patterns defined
 by the TRF site. You'll probably want to start here. Generated automatically
 using the default <code>gulp</code> task using comments in the Sass files.</p>
-<h3><a href="/sites/all/themes/trf/documentation/sassdoc/index.html">SassDoc</a></h3><p>Documents Sass breakpoints, functions and mixins, which are not included in a
+<h3><a href="/sites/all/themes/trf/documentation/sassdoc/index.html">SassDoc</a></h3>
+<p>Documents Sass breakpoints, functions and mixins, which are not included in a
 style guide. Generated automatically using the default <code>gulp</code> task using
 comments in the Sass files.</p>
-<h3><a href="/sites/all/themes/trf/documentation/jsdoc/index.html">JSDoc</a></h3><p>Documents custom JavaScript on the TRF site.</p>
-<h3>Coding standards</h3><p>TRF includes an <a href="http://editorconfig.org/">.editorconfig</a> file; you should
+<h3><a href="/sites/all/themes/trf/documentation/jsdoc/index.html">JSDoc</a></h3>
+<p>Documents custom JavaScript on the TRF site.</p>
+<h3>Coding standards</h3>
+<p>TRF includes an <a href="http://editorconfig.org/">.editorconfig</a> file; you should
 install the appropriate plugin for your text editor if necessary and these
 standards will be enforced automatically:</p>
 <ul>
@@ -137,7 +146,8 @@ can't be broken across lines.</li>
 </ul>
 <p>These standards are specifically designed to align with the
 <a href="https://www.drupal.org/coding-standards">Drupal coding standards</a>.</p>
-<h3>Standards for writing Sass files</h3><p>A <a href="https://github.com/sasstools/sass-lint">Sass Lint</a> file is included in the
+<h3>Standards for writing Sass files</h3>
+<p>A <a href="https://github.com/sasstools/sass-lint">Sass Lint</a> file is included in the
 theme to enforce the following standards. Sass Lint has
 <a href="https://github.com/sasstools/sass-lint#ide-integration">integrations</a> for many
 text editors and IDEs.</p>
@@ -211,9 +221,9 @@ there.</li>
 
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a>
 	
-		on June 16, 2017
+		on December 31, 2020
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

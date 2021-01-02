@@ -1,0 +1,7 @@
+name = TRF retirement
+description = Disables site settings that would interfere with creating a generated static version of the site.
+core = 7.x
+package = Exotica Jewelry
+version = 7.x-1.0
+project = trf_retire
+dependencies[] = pathauto

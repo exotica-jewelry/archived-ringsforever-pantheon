@@ -1,0 +1,24 @@
+/**
+ * Implements hook_html_head_alter().
+ *
+ * Hide links added by core that we don't want in the static site.
+ *
+ * @source https://www.lullabot.com/articles/sending-drupal-site-retirement-using-httrack
+ */
+function trf_retire_html_head_alter(&$elements) {
+  $core_tags = array(
+    'generator',
+    'shortlink',
+    'shortcut icon',
+  );
+  foreach ($elements as $name => &$element) {
+    foreach ($core_tags as $tag) {
+      if (!empty($element['#attributes']['rel']) && $element['#attributes']['rel'] == $tag) {
+        unset($elements[$name]);
+      }
+      elseif (!empty($element['#attributes']['name']) && strtolower($element['#attributes']['name']) == $tag) {
+        unset($elements[$name]);
+      }
+    }
+  }
+}

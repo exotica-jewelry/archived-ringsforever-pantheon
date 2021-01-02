@@ -22,40 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
   jQuery('.field-name-field-cat-featured-rings img').attr('title', '');
 
 /**
- * Shopping cart manipulations
- * @function external: "jQuery.fn".tooltipster
- * @class cart
- *
- * @author Ivan Boothe
- */
-
-  // Add class to indicate items in the cart
-  if (jQuery('.line-item-quantity').length) {
-    jQuery('body').addClass('has-items');
-  }
-
-  // Add a title attribute to the checkout button
-  jQuery('.block-shopping-cart-block .line-item-summary-checkout a').attr('title', 'View your cart and checkout');
-
-  // Add class to select buttons on click
-  jQuery('.block-shopping-cart-block .line-item-summary-checkout a, .commerce-add-to-cart-confirmation .button.checkout a').click(function(){
-    jQuery(this).addClass('is-clicked');
-  });
-
-  // Move explanatory width block to just below width dropdown
-  jQuery('.page-node .field-name-ring-width').insertAfter('.form-item-attributes-field-ring-width');
-
-  // Display message when add-to-cart button is clicked
-  jQuery('.field-type-commerce-product-reference form.commerce-add-to-cart .form-submit').click(function(){
-    jQuery(this).after('<p class="is-loading">Adding this ring to your cart...</p>');
-  });
-
-  // Display message when checkout button is clicked
-  jQuery('.page-cart #edit-checkout').click(function(){
-    jQuery(this).after('<p class="is-loading">Loading...</p>');
-  });
-
-/**
  * Tooltips
  * @function external: "jQuery.fn".tooltipster
  * @class tooltips

@@ -16,8 +16,8 @@
     font-family: $font-default;
 
     @include mq(smallish) {
-      max-width: 175px;
-      padding-right: ($padding * 2);
+      max-width: 300px;
+      padding-right: ($padding * 5);
     }
 
     .nolink {
